@@ -38,6 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'features',
+    'rest_framework',
+    'diningHall',
+    'diningHall_api',
+    'event',
+    'event_api',
+    'guest',
+    'guest_api',
+    'meal',
+    'meal_api',
+    'reservation',
+    'reservation_api',
+    'room',
+    'room_api',
+    'invoice',
 ]
 
 MIDDLEWARE = [
