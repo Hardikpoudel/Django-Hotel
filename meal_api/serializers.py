@@ -9,6 +9,8 @@ class mealTypeSerializer(serializers.ModelSerializer):
 
 
 class mealSerializer(serializers.ModelSerializer):
+    typeID = mealTypeSerializer()
+
     class Meta:
         model = meal
         fields = '__all__'
