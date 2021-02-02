@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import datetime
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +26,8 @@ SECRET_KEY = '=uf486#q2vyaq*3y6ak_$5qk#ybwix@ivil=+1&g9m8@o2dwj-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.104', 'localhost', '127.0.0.1']
+AUTH_USER_MODEL = 'authentication.User'
+ALLOWED_HOSTS = ['192.168.0.102', 'localhost', '127.0.0.1']
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'features',
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
     'diningHall',
     'diningHall_api',
     'event',
@@ -54,6 +57,7 @@ INSTALLED_APPS = [
     'invoice',
     'Image',
     'corsheaders',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -94,7 +98,7 @@ WSGI_APPLICATION = 'safal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'safal',
+        'NAME': 'athentication',
         'USER': 'postgres',
         'PASSWORD': 'poudel',
         'HOST': 'localhost'
@@ -151,6 +155,31 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'NON_FIELD_ERRORS_KEY': 'error',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
     # Adding django filter backend
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
 }
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=1),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
+}
+
+JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY')
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')

@@ -30,13 +30,11 @@ class roomList(viewsets.ModelViewSet):
     #     IsAdminUser: ['update', 'partial_update', 'destroy', 'create'],
     #     AllowAny: ['retrieve', 'list']
     # }
-
     queryset = room.objects.all()
 
-    def get_object(self, queryset=None, **kwargs):
+    def get_object(self, **kwargs):
         item = self.kwargs.get('pk')
-
-        return get_object_or_404(room, slug=item)
+        return get_object_or_404(room, id=item)
 
     # def get_queryset(self):
     #     return room.objects.all()
