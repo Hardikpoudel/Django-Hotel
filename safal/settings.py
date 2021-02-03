@@ -27,7 +27,7 @@ SECRET_KEY = '=uf486#q2vyaq*3y6ak_$5qk#ybwix@ivil=+1&g9m8@o2dwj-'
 DEBUG = True
 
 AUTH_USER_MODEL = 'authentication.User'
-ALLOWED_HOSTS = ['192.168.0.102', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.0.104', 'localhost', '127.0.0.1']
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'invoice',
     'Image',
     'corsheaders',
+    'drf_yasg',
     'authentication',
 ]
 
@@ -175,11 +176,10 @@ SIMPLE_JWT = {
 JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY')
 
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'hardkpoudel24@gmail.com'
+EMAIL_HOST_PASSWORD = 'hardikishero891'
