@@ -7,7 +7,9 @@ from django.utils.text import slugify
 
 class roomType(models.Model):
     typeName = models.CharField(max_length=50)
-
+    
+    def __str__(self):
+        return self.typeName
 
 class room(models.Model):
     typeID = models.ForeignKey(roomType, on_delete=models.CASCADE)

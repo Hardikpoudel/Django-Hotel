@@ -28,5 +28,6 @@ urlpatterns = [
     path('api/reservation', include('reservation_api.urls')),
     path('api/room/', include('room_api.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    path('api/auth/', include('authentication.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
