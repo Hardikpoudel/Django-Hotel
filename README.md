@@ -15,3 +15,8 @@ date:01/29
 date:02/01
 #### created new app name Image for the images of the room
 #### created imaged serializer for viewing image in frontend
+
+date:2/9
+### worked on the list view of the imageID and roomType
+#### created to_representation function for the nested serializer
+#### created custom path for the image 
