@@ -4,7 +4,7 @@ from .views import roomTypeList, roomList, imageList
 router = DefaultRouter()
 
 router.register('img', imageList, basename='img')
-router.register('roomList', roomTypeList, basename='roomlist')
+router.register('typeList', roomTypeList, basename='typeList')
 router.register('room', roomList, basename='room')
 
 

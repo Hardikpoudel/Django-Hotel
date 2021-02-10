@@ -27,7 +27,7 @@ SECRET_KEY = '=uf486#q2vyaq*3y6ak_$5qk#ybwix@ivil=+1&g9m8@o2dwj-'
 DEBUG = True
 
 AUTH_USER_MODEL = 'authentication.User'
-ALLOWED_HOSTS = ['192.168.0.103', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.0.108', 'localhost', '127.0.0.1']
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'features',
     'rest_framework',
+    'django_filters',
     'rest_framework_simplejwt.token_blacklist',
     'diningHall',
     'diningHall_api',
@@ -156,7 +157,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
     'NON_FIELD_ERRORS_KEY': 'error',

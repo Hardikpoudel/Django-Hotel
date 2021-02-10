@@ -1,5 +1,5 @@
 from django.db import models
-from reservation.models import reservation
+from reservation.models import reservation, reserved
 from Image.models import picture
 from django.utils.text import slugify
 # Create your models here.
@@ -7,9 +7,10 @@ from django.utils.text import slugify
 
 class roomType(models.Model):
     typeName = models.CharField(max_length=50)
-    
+
     def __str__(self):
         return self.typeName
+
 
 class room(models.Model):
     typeID = models.ForeignKey(roomType, on_delete=models.CASCADE)
@@ -22,7 +23,7 @@ class room(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.roomSlug:
-            t_slug = slugify(self.beds)
+            t_slug = slugify(self.roomName)
             origin = 1
             unique_slug = t_slug
             while room.objects.filter(roomSlug=unique_slug).exists():
@@ -31,8 +32,12 @@ class room(models.Model):
             self.roomSlug = unique_slug
         super().save(*args, **kwargs)
 
+    # def get_absolute_url(self):
+    #     return ('room', (), {'roomSlug': self.roomSlug})
+
 
 class roomReservation(models.Model):
     roomID = models.ForeignKey(room, on_delete=models.CASCADE)
     reservationID = models.ForeignKey(reservation, on_delete=models.CASCADE)
+    reservedID = models.ForeignKey(reserved, on_delete=models.CASCADE)
     totalPrice = models.IntegerField()

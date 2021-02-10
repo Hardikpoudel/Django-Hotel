@@ -4,4 +4,8 @@ from django.db import models
 
 
 class picture(models.Model):
-    photo = models.ImageField(upload_to='')
+
+    photo1 = models.ImageField(upload_to='', null=True)
+    photo2 = models.ImageField(upload_to='', null=True)
+    photo3 = models.ImageField(upload_to='', null=True)
+    photo4 = models.ImageField(upload_to='', null=True)

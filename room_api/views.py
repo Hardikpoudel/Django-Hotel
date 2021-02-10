@@ -39,9 +39,13 @@ class roomList(viewsets.ModelViewSet):
     # }
     queryset = room.objects.all()
 
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['roomName', 'typeID']
+
     def get_object(self, **kwargs):
         item = self.kwargs.get('pk')
-        return get_object_or_404(room, id=item)
+        print(item)
+        return get_object_or_404(room, roomSlug=item)
 
     # def get_queryset(self):
     #     return room.objects.all()
