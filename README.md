@@ -20,3 +20,7 @@ date:2/9
 ### worked on the list view of the imageID and roomType
 #### created to_representation function for the nested serializer
 #### created custom path for the image 
+
+date: 2/10
+#### updated the picture model with additional 4 field, updated the detail viewset
+#### created a reservation status table in reservation app
