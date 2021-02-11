@@ -12,6 +12,5 @@ class diningHall(models.Model):
 class diningHallReservation(models.Model):
     mealID = models.ForeignKey(meal, on_delete=models.CASCADE)
     hallID = models.ForeignKey(diningHall, on_delete=models.CASCADE)
-    reservedID = models.ForeignKey(reserved, on_delete=models.CASCADE)
     reservationID = models.ForeignKey(reservation, on_delete=models.CASCADE)
     totalPrice = models.IntegerField()

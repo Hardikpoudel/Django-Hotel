@@ -1,5 +1,5 @@
 from django.db import models
-from reservation.models import reservation, reserved
+from reservation.models import reservation
 from Image.models import picture
 from django.utils.text import slugify
 # Create your models here.
@@ -39,5 +39,4 @@ class room(models.Model):
 class roomReservation(models.Model):
     roomID = models.ForeignKey(room, on_delete=models.CASCADE)
     reservationID = models.ForeignKey(reservation, on_delete=models.CASCADE)
-    reservedID = models.ForeignKey(reserved, on_delete=models.CASCADE)
     totalPrice = models.IntegerField()
