@@ -7,9 +7,10 @@ from django.utils.text import slugify
 
 class roomType(models.Model):
     typeName = models.CharField(max_length=50)
-    
+
     def __str__(self):
         return self.typeName
+
 
 class room(models.Model):
     typeID = models.ForeignKey(roomType, on_delete=models.CASCADE)
@@ -22,7 +23,7 @@ class room(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.roomSlug:
-            t_slug = slugify(self.beds)
+            t_slug = slugify(self.roomName)
             origin = 1
             unique_slug = t_slug
             while room.objects.filter(roomSlug=unique_slug).exists():
@@ -30,6 +31,9 @@ class room(models.Model):
                 origin += 1
             self.roomSlug = unique_slug
         super().save(*args, **kwargs)
+
+    # def get_absolute_url(self):
+    #     return ('room', (), {'roomSlug': self.roomSlug})
 
 
 class roomReservation(models.Model):
