@@ -1,5 +1,5 @@
 from django.db import models
-from reservation.models import reservation
+from reservation.models import reservation, reserved
 from meal.models import meal
 # Create your models here.
 

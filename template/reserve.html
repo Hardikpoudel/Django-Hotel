@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Room reservation</h2>
+
+    <form action="reserve" method="POST">
+      {% csrf_token %}
+      <label for="fname">First name:</label><br />
+      <input type="text" id="fname" name="fname" /><br />
+      <label for="lname">Last name:</label><br />
+      <input type="text" id="lname" name="lname" /><br /><br />
+      <label for="room">Rooms:</label><br />
+      <input type="text" id="room" name="room" /><br /><br />
+      <label for="time">Date time</label>
+      <input type="text" name="date"></input>
+
+      <input type="submit" value="Reserve" />
+    </form>
+
+    <p>If you click the "Submit" button, the reservation of will be done.</p>
+  </body>
+</html>

@@ -21,3 +21,7 @@ class reservation(models.Model):
             self.tsCreated = timezone.now()
         self.tsUpdated = timezone.now()
         return super(reservation, self).save(*args, **kwargs)
+
+
+class reserved(models.Model):
+    status = models.BooleanField(default=False)
