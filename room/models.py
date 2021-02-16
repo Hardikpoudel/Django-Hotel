@@ -20,6 +20,7 @@ class room(models.Model):
     description = models.CharField(max_length=100)
     beds = models.IntegerField()
     price = models.IntegerField()
+    status = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.roomSlug:

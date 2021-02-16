@@ -1,11 +1,12 @@
 from django.db import models
-from reservation.models import reservation, reserved
+from reservation.models import reservation
 from meal.models import meal
 # Create your models here.
 
 
 class diningHall(models.Model):
     hallName = models.CharField(max_length=50)
+    status = models.BooleanField(default=False)
     tableNo = models.IntegerField()
 
 
