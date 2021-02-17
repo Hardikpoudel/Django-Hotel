@@ -7,6 +7,11 @@ from room.models import roomType, room, roomReservation
 from .serializers import roomTypeSerializer, roomSerializer, roomReservationSerializer, imageSerializer
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
+
+# CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 
 class imageList(viewsets.ModelViewSet):
@@ -28,6 +33,8 @@ class roomTypeList(viewsets.ModelViewSet):
 
 
 class roomList(viewsets.ModelViewSet):
+    # if filter_backends:
+
     serializer_class = roomSerializer
     # filter_backends = [DjangoFilterBackend]
     # filterset_fields = ['roomName', 'price']

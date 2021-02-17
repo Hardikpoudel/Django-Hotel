@@ -4,7 +4,6 @@ from django.db import models
 
 
 class picture(models.Model):
-
     photo1 = models.ImageField(upload_to='', null=True)
     photo2 = models.ImageField(upload_to='', null=True)
     photo3 = models.ImageField(upload_to='', null=True)

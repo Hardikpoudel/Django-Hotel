@@ -35,7 +35,7 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 urlpatterns = [
-    path('reserv/', include('reservation.urls')),
+    # path('reserv/', include('reservation.urls')),
     path('admin/', admin.site.urls),
     path('api/dining', include('diningHall_api.urls')),
     path('api/event', include('event_api.urls')),

@@ -27,7 +27,7 @@ SECRET_KEY = '=uf486#q2vyaq*3y6ak_$5qk#ybwix@ivil=+1&g9m8@o2dwj-'
 DEBUG = True
 
 AUTH_USER_MODEL = 'authentication.User'
-ALLOWED_HOSTS = ['192.168.0.108', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.0.106', 'localhost', '127.0.0.1']
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'safal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'athentication',
+        'NAME': 'safal',
         'USER': 'postgres',
         'PASSWORD': 'poudel',
         'HOST': 'localhost'
@@ -110,6 +110,19 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+CACHE_TTL = 60 * 1500
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "example"
+    }
+}
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
